@@ -10,7 +10,7 @@ const useCategoriesData = () => {
 
   useEffect(() => {
     setLoading(true)
-    window.fetch('https://petgram-server.midudev.now.sh/categories')
+    window.fetch('https://petgram-server.moransantiago.now.sh/categories')
       .then(res => res.json())
       .then(res => {
         setCategories(res)
