@@ -1,7 +1,7 @@
 import { graphql } from 'react-apollo'
 import { gql } from 'apollo-boost'
 
-export const withPhotos = graphql(gql`#<-- High orden component
+const getPhotos = gql`
     query getPhotos($categoryId: ID) {
         photos(categoryId: $categoryId) {
             id
@@ -12,4 +12,6 @@ export const withPhotos = graphql(gql`#<-- High orden component
             liked
         }
     }
-`)
+`
+
+export const withPhotos = graphql(getPhotos)// <--High orden component

@@ -51,7 +51,7 @@ export const ListOfCategories = () => {
     </List>
   )
 
-  if (loading) return 'Cargando...'
+  if (loading) return 'Loading...'
 
   return (
     <Fragment>

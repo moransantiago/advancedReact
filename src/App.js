@@ -18,7 +18,7 @@ export const App = () => {
       <Logo />
       {
         detailId
-          ? <PhotoCardWithQuery id={detailId}/>
+          ? <PhotoCardWithQuery id={detailId} />
           : <Fragment>
             <ListOfCategories />
             <ListOfPhotoCards categoryId={3} />
