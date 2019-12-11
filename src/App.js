@@ -1,30 +1,51 @@
 import React from 'react'
 
+import { Router } from '@reach/router'
+
 import { Home } from './pages/Home'
+import { Detail } from './pages/Detail'
+import { Favs } from './pages/Favs'
+import { User } from './pages/User'
+import { NotRegisteredUser } from './pages/NotRegisteredUser'
 
-import { PhotoCardWithQuery } from './containers/PhotoCardWithQuery'
-
+import { Navbar } from './components/Navbar'
 import { Logo } from './components/Logo'
 import { GlobalStyle } from './components/styles/GlobalStyles'
 
-import { Router } from '@reach/router'
+const UserLogged = ({ children }) => children({ isAuth: false })
 
 export const App = () => {
-  const urlParams = new window.URLSearchParams(window.location.search)// <--Get each url param to a const
-  const detailId = urlParams.get('detail')// <--Get the exact params of the query: detail
-
   return (
     <div>
       <GlobalStyle />
       <Logo />
-      {
-        detailId
-          ? <PhotoCardWithQuery id={detailId} />
-          : <Router>
-            <Home path='/' />
-            <Home path='/pet/:id' />
-          </Router>
-      }
+      <Router>
+        <Home path='/' />
+        <Home path='/pet/:id' />
+        <Detail path='/detail/:detailId' />
+      </Router>
+      <UserLogged>
+        {
+          ({ isAuth }) => {
+            if (isAuth) {
+              return (
+                <Router>
+                  <Favs path='/favs' />
+                  <User path='/user' />
+                </Router>
+              )
+            } else {
+              return (
+                <Router>
+                  <NotRegisteredUser path='/favs' />
+                  <NotRegisteredUser path='/user' />
+                </Router>
+              )
+            }
+          }
+        }
+      </UserLogged>
+      <Navbar />
     </div>
   )
 }

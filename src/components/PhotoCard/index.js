@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react'
 
+import { Link } from '@reach/router'
+
 import { Article, ImgWrapper, Img } from './styles'
 
 import { FavButton } from '../FavButton'
@@ -21,15 +23,15 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
       {
         show &&
           <Fragment>
-            <a href={`/?detail=${id}`}>
+            <Link to={`/detail/${id}`}>
               <ImgWrapper>
                 <Img src={src} />
               </ImgWrapper>
-            </a>
+            </Link>
 
             <ToggleLikeMutation>
               {
-                toggleLike => { //<-- In the render prop of a MUTATION, you recieve the MUTATION itself
+                toggleLike => { // <-- In the render prop of a MUTATION, you recieve the MUTATION itself
                   const handleFavClick = () => {
                     !liked && toggleLike({
                       variables: {
