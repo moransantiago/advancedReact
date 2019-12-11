@@ -45,6 +45,7 @@ export const ListOfCategories = () => {
           <Item key={category.id}>
             <Category
               {...category}// <-- The rest operator passes all the categories of the passed object
+              path={`/pet/${category.id}`}
             />
           </Item>)
       }

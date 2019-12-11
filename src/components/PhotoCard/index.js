@@ -29,7 +29,7 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
 
             <ToggleLikeMutation>
               {
-                (toggleLike) => {
+                toggleLike => { //<-- In the render prop of a MUTATION, you recieve the MUTATION itself
                   const handleFavClick = () => {
                     !liked && toggleLike({
                       variables: {

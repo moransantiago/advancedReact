@@ -17,7 +17,7 @@ const getSinglePhoto = gql`
     }
 `
 
-const renderProp = ({ loading, error, data }) => {
+const renderProp = ({ loading, error, data }) => { // <-- In the render prop of a QUERY, you recieve loading, error, data
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error...</p>
   const { photo = {} } = data
