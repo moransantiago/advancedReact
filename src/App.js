@@ -12,7 +12,7 @@ import { Navbar } from './components/Navbar'
 import { Logo } from './components/Logo'
 import { GlobalStyle } from './components/styles/GlobalStyles'
 
-const UserLogged = ({ children }) => children({ isAuth: false })
+import Context from './Context'
 
 export const App = () => {
   return (
@@ -24,7 +24,7 @@ export const App = () => {
         <Home path='/pet/:id' />
         <Detail path='/detail/:detailId' />
       </Router>
-      <UserLogged>
+      <Context.Consumer>
         {
           ({ isAuth }) => {
             if (isAuth) {
@@ -44,7 +44,7 @@ export const App = () => {
             }
           }
         }
-      </UserLogged>
+      </Context.Consumer>
       <Navbar />
     </div>
   )

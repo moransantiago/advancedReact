@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { Category } from '../Category/index'
 
@@ -55,9 +55,9 @@ export const ListOfCategories = () => {
   if (loading) return 'Loading...'
 
   return (
-    <Fragment>
+    <>
       {renderList()}
       {showFixed && renderList(true)}
-    </Fragment>
+    </>
   )
 }

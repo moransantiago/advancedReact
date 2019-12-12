@@ -10,7 +10,7 @@ export const useNearScreen = () => {
         ? window.IntersectionObserver
         : import('intersection-observer')
     ).then(() => {
-      const observer = new window.IntersectionObserver(entries => {
+      const observer = new window.IntersectionObserver(entries => { // <-- Create the observer and define what should happen with each ref
         const { isIntersecting } = entries[0]
         if (isIntersecting) { //  <-- In case that the reference (in this case the article) is in the viewport, I render it
           setShow(true)
@@ -21,5 +21,5 @@ export const useNearScreen = () => {
     })
   }, [ref])
 
-  return [show, ref]
+  return [show, ref] // <-- Return show to evaluate inside the logic
 }

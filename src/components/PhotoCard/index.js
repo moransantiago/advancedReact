@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import { Link } from '@reach/router'
 
@@ -22,7 +22,7 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
     <Article ref={ref}>
       {
         show &&
-          <Fragment>
+          <>
             <Link to={`/detail/${id}`}>
               <ImgWrapper>
                 <Img src={src} />
@@ -51,7 +51,7 @@ export const PhotoCard = ({ id, likes = 0, src = DEFAULT_IMAGE }) => {
                 }
               }
             </ToggleLikeMutation>
-          </Fragment>
+          </>
       }
     </Article>
   )
