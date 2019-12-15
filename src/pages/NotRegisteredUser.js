@@ -5,6 +5,7 @@ import Context from '../Context'
 import { UserForm } from '../components/UserForm'
 
 import { RegisterMutation } from '../containers/RegisterMutation'
+import { LoginMutation } from '../containers/LoginMutation'
 
 export const NotRegisteredUser = () => (
   <Context.Consumer>
@@ -13,7 +14,7 @@ export const NotRegisteredUser = () => (
         <>
           <RegisterMutation>
             {
-              (register, { loading, error, data }) => {
+              (register, { loading, error }) => {
                 const onSubmit = ({ email, password }) => {
                   const input = { email, password }
                   const variables = { input }
@@ -25,7 +26,20 @@ export const NotRegisteredUser = () => (
               }
             }
           </RegisterMutation>
-          {/* <UserForm onSubmit={onSubmit} title='Log in' /> */}
+          <LoginMutation>
+            {
+              (login, { loading, error }) => {
+                const onSubmit = ({ email, password }) => {
+                  const input = { email, password }
+                  const variables = { input }
+                  login({ variables }).then(activateAuth)
+                }
+                const errorMsg = error && 'Wrong email or password'
+
+                return <UserForm error={errorMsg} disabled={loading} onSubmit={onSubmit} title='Log in' />
+              }
+            }
+          </LoginMutation>
         </>
       )
     }
