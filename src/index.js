@@ -7,7 +7,23 @@ import Context from './Context'
 import { App } from './App'
 
 const client = new ApolloClient({
-  uri: 'https://petgram-server.moransantiago.now.sh/graphql'
+  uri: 'https://petgram-server.moransantiago.now.sh/graphql',
+  request: operation => { // <-- Set the token into the headers of each GraphQL request
+    const token = window.sessionStorage.getItem('token')
+    const authorization = token ? `Bearer ${token}` : ''
+    operation.setContext({
+      headers: {
+        authorization
+      }
+    })
+  },
+  onError: error => {
+    const { networkError } = error
+    if (networkError && networkError.result.code === 'invalid_token') {
+      window.sessionStorage.removeItem('token')
+      window.location.href = '/'
+    }
+  }
 })
 
 ReactDOM.render(
