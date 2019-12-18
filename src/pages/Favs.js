@@ -1,10 +1,11 @@
 import React from 'react'
 
+import { Layout } from '../components/Layout'
+
 import { FavsWithQuery } from '../containers/GetFavorites'
 
 export const Favs = () => (
-  <>
-    <h1>Favs</h1>
+  <Layout title='Your favorites' subtitle='Here you can find your favorite posts'>
     <FavsWithQuery />
-  </>
+  </Layout>
 )
