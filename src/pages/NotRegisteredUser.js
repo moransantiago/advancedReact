@@ -38,7 +38,6 @@ export const NotRegisteredUser = () => {
               login({ variables }).then(({ data }) => {
                 const { login } = data
                 activateAuth(login)
-                console.log(login)
               })
             }
             const errorMsg = error && 'Wrong email or password'
