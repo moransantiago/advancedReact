@@ -15,13 +15,13 @@ import { GlobalStyle } from './components/styles/GlobalStyles'
 
 import { Context } from './Context'
 
-const Favs = React.lazy(() => import('./pages/Favs'))// <--Dynamic import
+const Favs = React.lazy(() => import('./pages/Favs'))// <--Dynamic import(I had to change the export const to a default import inside Favs page)
 
 export const App = () => {
   const { isAuth } = useContext(Context)
 
   return (
-    <Suspense fallback={<div />}>// <-- In case that anything is lazy(dynamic import) Suspense will load an empty div
+    <Suspense fallback={<div />}>
       <GlobalStyle />
       <Logo />
       <Router>
