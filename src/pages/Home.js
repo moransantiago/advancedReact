@@ -6,7 +6,7 @@ import { ListOfCategories } from '../components/ListOfCategories'
 import { ListOfPhotoCards } from '../containers/ListOfPhotoCards'
 
 const HomePage = ({ id }) => (
-  <Layout title="Your pet's social media" subtitle='With Petgram you can find beautiful pictures about cute pets'>
+  <Layout title='Your pets social media' subtitle='With Petgram you can find beautiful pictures about cute pets'>
     <ListOfCategories />
     <ListOfPhotoCards categoryId={id} />
   </Layout>
